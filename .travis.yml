@@ -9,6 +9,9 @@ script:
   - cd OpenMEEG*
   - pwd
   - ls -R
+  - ldd ./bin/om_xxx
+  - ./bin/om_xxx
+  - cp ./lib/libmatio.so.2.0.2 ./lib/libmatio.so.2
   - ./bin/om_xxx
  
 branches:
