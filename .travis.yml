@@ -9,7 +9,7 @@ script:
   - cd OpenMEEG*
   - pwd
   - ls -R
-  - ./bin/om_xx
+  - ./bin/om_xxx
  
 branches:
   only:
