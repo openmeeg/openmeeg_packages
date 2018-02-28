@@ -1,0 +1,14 @@
+language: shell
+
+os:
+  - osx
+  - linux
+
+script:
+  - tar -xvzf OpenMEEG*.tar.gz
+  - cd OpenMEEG*
+  - ./bin/om_xx
+ 
+branches:
+  only:
+    - master
