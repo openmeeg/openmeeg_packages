@@ -10,6 +10,7 @@ script:
   - pwd
   - ls -R
   - ldd ./bin/om_xxx
+  - ldd ./lib/libOpenMEEGMaths.so
   - ./bin/om_xxx
   - cp ./lib/libmatio.so.2.0.2 ./lib/libmatio.so.2
   - ./bin/om_xxx
