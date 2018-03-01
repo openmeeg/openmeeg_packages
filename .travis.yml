@@ -10,18 +10,20 @@ os:
 script:
   - |
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
-      shopt -s expand_aliases;
-      alias ldd='otool -L';
       tar -xvzf OpenMEEG*MacOSX.tar.gz;
       cd OpenMEEG*MacOSX
+      pwd
+      ls -lR
+      otool -L ./bin/om_xxx
+      otool -L ./lib/libOpenMEEGMaths.dylib
     else
       tar -xvzf OpenMEEG*Linux.tar.gz;
       cd OpenMEEG*Linux
+      pwd
+      ls -lR
+      ldd ./bin/om_xxx
+      ldd ./lib/libOpenMEEGMaths.so
     fi
-  - pwd
-  - ls -lR
-  - ldd ./bin/om_xxx
-  - ldd ./lib/libOpenMEEGMaths.so
   - ./bin/om_xxx
  
 branches:
