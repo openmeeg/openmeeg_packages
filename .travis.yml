@@ -9,6 +9,11 @@ script:
   - cd OpenMEEG*
   - pwd
   - ls -lR
+  - |
+    if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
+      shopt -s expand_aliases;
+      alias ldd='otool -L';
+    fi
   - ldd ./bin/om_xxx
   - ldd ./lib/libOpenMEEGMaths.so
   - ./bin/om_xxx
