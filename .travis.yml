@@ -1,5 +1,8 @@
 language: shell
 
+git:
+  depth: 1
+
 os:
   - osx
   - linux
