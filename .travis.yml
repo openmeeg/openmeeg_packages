@@ -12,10 +12,6 @@ script:
   - ldd ./bin/om_xxx
   - ldd ./lib/libOpenMEEGMaths.so
   - ./bin/om_xxx
-  - cp ./lib/libmatio.so.2.0.2 ./lib/libmatio.so.2
-  - cp ./lib/libhdf5.so.7.0.0 ./lib/libhdf5.so.7
-  - cp ./lib/libz.so.1.2.8 ./lib/libz.so.1
-  - ./bin/om_xxx
  
 branches:
   only:
