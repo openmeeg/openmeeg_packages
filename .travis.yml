@@ -10,10 +10,11 @@ script:
       shopt -s expand_aliases;
       alias ldd='otool -L';
       tar -xvzf OpenMEEG*MacOSX.tar.gz;
+      cd OpenMEEG*MacOSX
     else
       tar -xvzf OpenMEEG*Linux.tar.gz;
+      cd OpenMEEG*Linux
     fi
-  - cd OpenMEEG*
   - pwd
   - ls -lR
   - ldd ./bin/om_xxx
