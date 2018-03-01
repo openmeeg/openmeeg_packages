@@ -5,15 +5,17 @@ os:
   - linux
 
 script:
-  - tar -xvzf OpenMEEG*.tar.gz
-  - cd OpenMEEG*
-  - pwd
-  - ls -lR
   - |
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
       shopt -s expand_aliases;
       alias ldd='otool -L';
+      tar -xvzf OpenMEEG*MacOSX.tar.gz;
+    else
+      tar -xvzf OpenMEEG*Linux.tar.gz;
     fi
+  - cd OpenMEEG*
+  - pwd
+  - ls -lR
   - ldd ./bin/om_xxx
   - ldd ./lib/libOpenMEEGMaths.so
   - ./bin/om_xxx
