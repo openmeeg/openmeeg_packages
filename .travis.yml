@@ -14,17 +14,17 @@ script:
       cd OpenMEEG*MacOSX
       pwd
       ls -lR
-      otool -L ./bin/om_xxx
+      otool -L ./bin/om_assemble
       otool -L ./lib/libOpenMEEGMaths.dylib
     else
       tar -xvzf OpenMEEG*Linux.tar.gz;
       cd OpenMEEG*Linux
       pwd
       ls -lR
-      ldd ./bin/om_xxx
+      ldd ./bin/om_assemble
       ldd ./lib/libOpenMEEGMaths.so
     fi
-  - ./bin/om_xxx
+  - ./bin/om_assemble
  
 branches:
   only:
