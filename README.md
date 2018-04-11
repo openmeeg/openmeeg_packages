@@ -1,5 +1,5 @@
 [![Build status](https://travis-ci.org/openmeeg/openmeeg_packages.svg?branch=master)](https://travis-ci.org/openmeeg/openmeeg_packages/branches)
-[![Build status](https://ci.appveyor.com/api/projects/status/k7ns285ea6lrd090/branch/master?svg=true)](https://ci.appveyor.com/project/openmeeg/openmeeg_packages/branch/master)
+[![Build status](https://ci.appveyor.com/api/projects/status/ion760h3trwrq9te?svg=true)](https://ci.appveyor.com/project/openmeegci/openmeeg-packages)
 
 
 # openmeeg_packages
