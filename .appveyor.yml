@@ -1,0 +1,47 @@
+shallow_clone: true
+
+platform:
+  # - x86
+  - x64
+
+configuration:
+  # - Debug
+  - Release
+
+# environment:
+#   OPENMEEG_TAR_URL: http://openmeeg.gforge.inria.fr/download/OpenMEEG-2.4.0-Win64.tar.gz
+
+skip_commits:
+# Add [av skip] to commit messages
+  message: /\[av skip\]/
+
+# # To allow remote connection to appveyor
+# init:
+#   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+install:
+  ############################################################################
+  # Install Win packages
+  ############################################################################
+  - choco install dependencywalker -y --allow-empty-checksums
+
+
+build_script:
+  - ps: Start-FileDownload 'http://openmeeg.gforge.inria.fr/download/OpenMEEG-2.4.0-Win64.tar.gz'
+  - 7z e -y OpenMEEG-2.4.0-Win64.tar.gz
+  - 7z x -y OpenMEEG-2.4.0-Win64.tar -o%APPVEYOR_BUILD_FOLDER%
+
+test_script:
+
+  # Check dependencies
+  - set PATH=%APPVEYOR_BUILD_FOLDER%\OpenMEEG-2.4.0-Win64\bin\;%PATH%
+  - depends.exe /f:1 /c /oc:%APPVEYOR_BUILD_FOLDER%\depends.txt %APPVEYOR_BUILD_FOLDER%\OpenMEEG-2.4.0-Win64\bin\om_assemble.exe
+  - appveyor PushArtifact %APPVEYOR_BUILD_FOLDER%\depends.txt
+  - type %APPVEYOR_BUILD_FOLDER%\depends.txt | grep -i error
+  # - call %APPVEYOR_BUILD_FOLDER%\OpenMEEG-2.4.0-Win64\bin\om_assemble.exe
+  # - dumpbin /dependents om_assemble.exe
+
+deploy: off
+
+# on_finish:
+#   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
