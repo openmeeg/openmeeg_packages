@@ -26,8 +26,6 @@ script:
       $LDD ./lib/libOpenMEEGMaths.dylib;
       cd ..;
     done
-
-  - ./bin/om_assemble
  
 branches:
   only:
