@@ -11,18 +11,19 @@ script:
   - |
     if [[ "${TRAVIS_OS_NAME}" == "osx" ]]; then
       export PREFIX=MacOSX
-      alias ldd='otool -L'
+      export LDD='otool -L'
     else
       export PREFIX=Linux
+      export LDD='ldd'
     fi
     export FILES=`ls OpenMEEG*${PREFIX}.tar.gz`
     for f in $FILES; do
       tar -xvzf ${f};
       cd ${f/.tar.gz/};
       pwd;
-      ls -lR;
-      ldd ./bin/om_assemble;
-      ldd ./lib/libOpenMEEGMaths.dylib;
+      ls -l;
+      $LDD ./bin/om_assemble;
+      $LDD ./lib/libOpenMEEGMaths.dylib;
       cd ..;
     done
 
